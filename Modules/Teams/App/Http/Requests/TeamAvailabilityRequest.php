@@ -15,8 +15,14 @@ use Modules\Teams\App\Enums\WeekDays;
  *    type="array",
  *    @OA\Items(
  *      type="object",
- *      required={"day", "start_time", "end_time"},
- *      @OA\Property(property="day", type="string", enum={"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}),
+ *      required={"day_of_week", "start_time", "end_time"},
+ *      @OA\Property(
+ *          property="day_of_week",
+ *          type="integer",
+ *          enum={0,1,2,3,4,5,6},
+ *          example="0,1,2,3,4,5,6",
+ *          description="Day of week (0=Sunday, 6=Saturday)"
+ *      ),
  *      @OA\Property(property="start_time", type="string", format="time", example="09:00"),
  *      @OA\Property(property="end_time", type="string", format="time", example="17:00")
  *   )
