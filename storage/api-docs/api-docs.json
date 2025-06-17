@@ -1,0 +1,415 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Apes APIs Documentation",
+        "description": "Apes APIs Documentation for Laravel API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register a new user",
+                "description": "Register a new user.",
+                "operationId": "86acd5c8008efcf9d53e2c445910a832",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login a user",
+                "description": "Login a user.",
+                "operationId": "dd08fd57427aa5f03d929e45aeef0fe8",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/bookings": {
+            "get": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Get All Bookings",
+                "description": "Get All Bookings",
+                "operationId": "10055feee49b8c44f105584da9618d5d",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Create a new Booking",
+                "description": "Store a new Booking.",
+                "operationId": "5cc3b20c1fabff9e20521650d60ab5c0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BookingRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Delete a Booking",
+                "description": "Delete a Booking.",
+                "operationId": "fdfde3e6b5d8cc9b3b4b55fd6655c686",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the booking to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/teams/{id}/generate-slots": {
+            "get": {
+                "tags": [
+                    "TeamsAvailability"
+                ],
+                "summary": "Generate Team weekly availability",
+                "description": "Generate Team weekly availability",
+                "operationId": "340f4d9d04eace27ccd73437f9668727",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the team id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "description": "Start Date",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "End Date",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/teams/{id}/availability": {
+            "post": {
+                "tags": [
+                    "TeamsAvailability"
+                ],
+                "summary": "Store Team weekly availability",
+                "description": "Store Team weekly availability",
+                "operationId": "9bf543cc83d8572d57e16218772e8ec9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the team id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TeamAvailabilityRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/teams": {
+            "get": {
+                "tags": [
+                    "Teams"
+                ],
+                "summary": "Get all Teams",
+                "description": "Display a listing of the Teams.",
+                "operationId": "f87d25e716f3e0acb8cc4b21230a18bb",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Teams"
+                ],
+                "summary": "Create a new Team",
+                "description": "Store a new Team.",
+                "operationId": "f26d1803d2e430dc68ef2acca8729947",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TeamRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/tenants": {
+            "get": {
+                "tags": [
+                    "Tenants"
+                ],
+                "summary": "Get Tenant Details",
+                "description": "Display Details of the Tenant.",
+                "operationId": "8779ced3b568e5b4302bac66aef93310",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "LoginRequest": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 255
+                    },
+                    "password": {
+                        "type": "string",
+                        "minLength": 8
+                    }
+                },
+                "type": "object"
+            },
+            "RegisterRequest": {
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 255
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 255
+                    },
+                    "password": {
+                        "type": "string",
+                        "minLength": 8
+                    },
+                    "password_confirmation": {
+                        "type": "string",
+                        "minLength": 8
+                    }
+                },
+                "type": "object"
+            },
+            "BookingRequest": {
+                "required": [
+                    "team_id",
+                    "start_time",
+                    "end_time",
+                    "day"
+                ],
+                "properties": {
+                    "team_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "start_time": {
+                        "type": "string",
+                        "format": "time",
+                        "example": "18:00"
+                    },
+                    "end_time": {
+                        "type": "string",
+                        "format": "time",
+                        "example": "19:00"
+                    },
+                    "day": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-06-17"
+                    }
+                },
+                "type": "object"
+            },
+            "TeamAvailabilityRequest": {
+                "required": [
+                    "availability"
+                ],
+                "properties": {
+                    "availability": {
+                        "type": "array",
+                        "items": {
+                            "required": [
+                                "day",
+                                "start_time",
+                                "end_time"
+                            ],
+                            "properties": {
+                                "day": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Monday",
+                                        "Tuesday",
+                                        "Wednesday",
+                                        "Thursday",
+                                        "Friday",
+                                        "Saturday",
+                                        "Sunday"
+                                    ]
+                                },
+                                "start_time": {
+                                    "type": "string",
+                                    "format": "time",
+                                    "example": "09:00"
+                                },
+                                "end_time": {
+                                    "type": "string",
+                                    "format": "time",
+                                    "example": "17:00"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "TeamRequest": {
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "example": "Development Team"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Auth"
+        },
+        {
+            "name": "Bookings",
+            "description": "Bookings"
+        },
+        {
+            "name": "TeamsAvailability",
+            "description": "TeamsAvailability"
+        },
+        {
+            "name": "Teams",
+            "description": "Teams"
+        },
+        {
+            "name": "Tenants",
+            "description": "Tenants"
+        }
+    ]
+}
