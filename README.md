@@ -49,9 +49,8 @@ A modular, multi-tenant booking platform built with Laravel, using a **single da
    - Copy `.env.example` → `.env`
    - Set `APP_URL=http://apes.localhost`
 
-4. **Serve the app locally** (Apache or Valet recommended):
+4. **Serve the app locally** (Apache):
    - Configure wildcard DNS for `*.apes.localhost`  
-     (Valet: `valet link apes && valet secure && valet tld localhost`)
 
 5. **Run migrations**:
    ```bash
